@@ -1,7 +1,13 @@
 * { box-sizing: border-box; }
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   color: #222;
   background: #fff;
@@ -10,9 +16,67 @@ body {
 header {
   padding: 16px 20px;
   border-bottom: 1px solid #e5e5e5;
+  flex-shrink: 0;
 }
 
 h1 {
   font-size: 1.1rem;
   margin: 0;
+}
+
+.split {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+#editor, #preview {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#editor {
+  border: none;
+  border-right: 1px solid #e5e5e5;
+  resize: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#editor:focus {
+  outline: none;
+}
+
+#preview pre {
+  background: #f6f6f6;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+#preview code {
+  background: #f0f0f0;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+#preview pre code {
+  background: none;
+  padding: 0;
+}
+
+#preview blockquote {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 3px solid #ddd;
+  color: #555;
+}
+
+@media (max-width: 700px) {
+  .split { flex-direction: column; }
+  #editor { border-right: none; border-bottom: 1px solid #e5e5e5; }
 }
